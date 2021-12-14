@@ -47,4 +47,4 @@ if [ -r "$ENV_DIR/CLUSTER_NAME" ]; then
     gcloud container clusters get-credentials $CLUSTER_NAME
 fi
 
-rm -rf $VENDOR_DIR/google-cloud-sdk/.install/
+#rm -rf $VENDOR_DIR/google-cloud-sdk/.install/
