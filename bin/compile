@@ -36,6 +36,9 @@ fi
 echo "cluster"
 echo $CLUSTER
 echo "${CLUSTER}"
-gcloud container clusters get-credentials $CLUSTER
+echo "test"
+echo $INSTALL_KUBECTL
+echo "done"
+gcloud container clusters get-credentials autopilot-cluster-1
 
 rm -rf $VENDOR_DIR/google-cloud-sdk/.install/
