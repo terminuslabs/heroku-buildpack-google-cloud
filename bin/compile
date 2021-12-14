@@ -33,7 +33,7 @@ if [ -r "$ENV_DIR/INSTALL_KUBECTL" ]; then
     fi
 fi
 
-if [ -n "${$CLUSTER}" ]; then
+if [ -n "${CLUSTER}" ]; then
   echo "getting cluster credentials"
   gcloud container clusters get-credentials $CLUSTER
 else
