@@ -33,6 +33,9 @@ if [ -r "$ENV_DIR/INSTALL_KUBECTL" ]; then
     fi
 fi
 
+echo "cluster"
+echo $CLUSTER
+echo "${CLUSTER}"
 gcloud container clusters get-credentials $CLUSTER
 
 rm -rf $VENDOR_DIR/google-cloud-sdk/.install/
