@@ -33,11 +33,6 @@ if [ -r "$ENV_DIR/INSTALL_KUBECTL" ]; then
     fi
 fi
 
-if [ -n "${CLUSTER}" ]; then
-  echo "getting cluster credentials"
-  gcloud container clusters get-credentials $CLUSTER
-else
-  echo "no cluster set"
-fi
+gcloud container clusters get-credentials $CLUSTER
 
 rm -rf $VENDOR_DIR/google-cloud-sdk/.install/
