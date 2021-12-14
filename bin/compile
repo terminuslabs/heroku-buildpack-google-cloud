@@ -39,17 +39,17 @@ if [ -r "$ENV_DIR/INSTALL_KUBECTL" ]; then
 fi
 
 
-if [ -r "$ENV_DIR/CLUSTER_NAME" ]; then
-    CLUSTER_NAME="$(cat "$ENV_DIR/CLUSTER_NAME")"
-    export GOOGLE_APPLICATION_CREDENTIALS='/app/google-credentials.json'
-    GOOGLE_CREDENTIALS="$(cat "$ENV_DIR/GOOGLE_CREDENTIALS")"
-    echo "$GOOGLE_CREDENTIALS" | base64 -d > $GOOGLE_APPLICATION_CREDENTIALS
-    ZONE="$(cat "$ENV_DIR/ZONE")"
-    PROJECT="$(cat "$ENV_DIR/PROJECT")"
-    gcloud auth activate-service-account --key-file /app/google-credentials.json
-    gcloud config set compute/zone $ZONE
-    gcloud config set project $PROJECT
-    gcloud container clusters get-credentials $CLUSTER_NAME
-fi
+#if [ -r "$ENV_DIR/CLUSTER_NAME" ]; then
+#    CLUSTER_NAME="$(cat "$ENV_DIR/CLUSTER_NAME")"
+#    export GOOGLE_APPLICATION_CREDENTIALS='/app/google-credentials.json'
+#    GOOGLE_CREDENTIALS="$(cat "$ENV_DIR/GOOGLE_CREDENTIALS")"
+#    echo "$GOOGLE_CREDENTIALS" | base64 -d > $GOOGLE_APPLICATION_CREDENTIALS
+#    ZONE="$(cat "$ENV_DIR/ZONE")"
+#    PROJECT="$(cat "$ENV_DIR/PROJECT")"
+#    gcloud auth activate-service-account --key-file /app/google-credentials.json
+#    gcloud config set compute/zone $ZONE
+#    gcloud config set project $PROJECT
+#    gcloud container clusters get-credentials $CLUSTER_NAME
+#fi
 
-#rm -rf $VENDOR_DIR/google-cloud-sdk/.install/
+rm -rf $VENDOR_DIR/google-cloud-sdk/.install/
