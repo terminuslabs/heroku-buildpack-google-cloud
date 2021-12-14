@@ -8,6 +8,7 @@ if [ -z "$GOOGLE_CREDENTIALS" ]; then
 else
     export GOOGLE_APPLICATION_CREDENTIALS='/app/google-credentials.json'
     echo "$GOOGLE_CREDENTIALS" | base64 -d > $GOOGLE_APPLICATION_CREDENTIALS
+    gcloud config set container/use_application_default_credentials true
     gcloud auth activate-service-account --key-file /app/google-credentials.json
     gcloud container clusters get-credentials autopilot-cluster-1 --region=us-central1 --project=terminus-docker
 fi
