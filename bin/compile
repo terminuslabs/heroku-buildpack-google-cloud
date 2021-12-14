@@ -17,7 +17,6 @@ wget https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.zip -qO /tmp/goo
 unzip -qd $VENDOR_DIR /tmp/google-cloud-sdk.zip
 $VENDOR_DIR/google-cloud-sdk/install.sh --usage-reporting=false --path-update=false --bash-completion=false
 rm -rf /tmp/google-cloud-sdk.zip
-rm -rf $VENDOR_DIR/google-cloud-sdk/.install/
 
 # Copy .profile.d script for configuring gcloud
 mkdir -p $BUILD_DIR/.profile.d
@@ -33,3 +32,12 @@ if [ -r "$ENV_DIR/INSTALL_KUBECTL" ]; then
         gcloud components install kubectl --quiet
     fi
 fi
+
+if [ -n "${$CLUSTER}" ]; then
+  echo "getting cluster credentials"
+  gcloud container clusters get-credentials $CLUSTER
+else
+  echo "no cluster set"
+fi
+
+rm -rf $VENDOR_DIR/google-cloud-sdk/.install/
