@@ -39,6 +39,8 @@ if [ -r "$ENV_DIR/CLUSTER_NAME" ]; then
     export GOOGLE_APPLICATION_CREDENTIALS='/app/google-credentials.json'
     GOOGLE_CREDENTIALS="$(cat "$ENV_DIR/GOOGLE_CREDENTIALS")"
     echo "$GOOGLE_CREDENTIALS" | base64 -d > $GOOGLE_APPLICATION_CREDENTIALS
+    $ZONE="$(cat "$ENV_DIR/$ZONE")"
+    gcloud config set compute/zone $ZONE
     gcloud auth activate-service-account --key-file /app/google-credentials.json
     gcloud container clusters get-credentials $CLUSTER_NAME
 fi
